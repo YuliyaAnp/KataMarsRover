@@ -1,0 +1,10 @@
+C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKataTests\obj\Debug\MarsRoverKataTests.csprojResolveAssemblyReference.cache
+C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKataTests\obj\Debug\MarsRoverKataTests.csproj.CoreCompileInputs.cache
+C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKataTests\bin\Debug\MarsRoverKataTests.dll
+C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKataTests\bin\Debug\MarsRoverKataTests.pdb
+C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKataTests\bin\Debug\MarsRoverKata.dll
+C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKataTests\bin\Debug\nunit.framework.dll
+C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKataTests\bin\Debug\MarsRoverKata.pdb
+C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKataTests\bin\Debug\nunit.framework.xml
+C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKataTests\obj\Debug\MarsRoverKataTests.dll
+C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKataTests\obj\Debug\MarsRoverKataTests.pdb

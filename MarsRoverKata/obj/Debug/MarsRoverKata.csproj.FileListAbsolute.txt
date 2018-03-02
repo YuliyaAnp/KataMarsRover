@@ -1,0 +1,5 @@
+C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKata\bin\Debug\MarsRoverKata.dll
+C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKata\bin\Debug\MarsRoverKata.pdb
+C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKata\obj\Debug\MarsRoverKata.csproj.CoreCompileInputs.cache
+C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKata\obj\Debug\MarsRoverKata.dll
+C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKata\obj\Debug\MarsRoverKata.pdb
