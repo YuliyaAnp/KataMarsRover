@@ -6,17 +6,20 @@ namespace MarsRoverKataTests
     [TestFixture]
     public class MarsRoverNavigatorShould
     {
-        [Test]
-        public void ReturnEastWhenInputIsLeftAndStateIsNorth()
+        [TestCase("N", "L", "W")]
+        [TestCase("N", "R", "E")]
+        [TestCase("W", "L", "S")]
+        [TestCase("W", "R", "N")]
+        [TestCase("S", "L", "E")]
+        [TestCase("S", "R", "W")]
+        [TestCase("E", "L", "N")]
+        [TestCase("E", "R", "S")]
+        public void ReturnEastWhenInputIsLeftAndStateIsNorth(string startingDirection, string inputControlSymbol, string expectedDirection)
         {
-            string startingDirection = "N";
-            string inputControlSymbol = "L";
+            var mrn = new MarsRoverNavigator(startingDirection);
+            string actualDirection = mrn.Navigate(inputControlSymbol);
 
-            string expected = "E";
-
-            string actual = MarsRoverNavigator.Navigate(startingDirection, inputControlSymbol);
-
-            Assert.AreEqual(expected, actual);
+            Assert.AreEqual(expectedDirection, actualDirection);
         }
     }
 }
