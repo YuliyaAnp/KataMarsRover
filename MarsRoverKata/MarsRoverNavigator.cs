@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MarsRoverKata
 {
@@ -10,12 +7,7 @@ namespace MarsRoverKata
     {
         public MarsRover MarsRover { get; }
 
-        public MarsRoverNavigator(MarsRover marsRover)
-        {
-            MarsRover = marsRover;
-        }
-
-        private static LinkedList<string> directions = new LinkedList<string>(new[] { "N", "W", "S", "E" });
+        private static readonly LinkedList<string> directions = new LinkedList<string>(new[] { "N", "W", "S", "E" });
 
         readonly Dictionary<char, Func<string, string>> spinMethods = new Dictionary<char, Func<string, string>>
         {
@@ -24,6 +16,15 @@ namespace MarsRoverKata
             {'M', Stay }
         };
 
+        public MarsRoverNavigator(MarsRover marsRover)
+        {
+            MarsRover = marsRover;
+        }
+        
+        public void ChangeDirection(char directionChangeCommand)
+        {
+            MarsRover.SetCurrentDirection(spinMethods[directionChangeCommand](MarsRover.CurrentDirection));
+        }
 
         private static string TurnRight(string currentDirection)
         {
@@ -40,11 +41,6 @@ namespace MarsRoverKata
         private static string Stay(string currentDirection)
         {
             return currentDirection;
-        }
-
-        public void ChangeDirection(char directionChangeCommand)
-        {
-            MarsRover.SetCurrentDirection(spinMethods[directionChangeCommand](MarsRover.CurrentDirection));
         }
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using MarsRoverKata;
+﻿using MarsRoverKata;
 using NUnit.Framework;
 using FluentAssertions;
 
@@ -29,7 +28,7 @@ namespace MarsRoverKataTests
 
             var actualDiretion = marsRover.CurrentDirection;
 
-            Assert.AreEqual(expectedDirection, actualDiretion);
+            actualDiretion.Should().BeEquivalentTo(expectedDirection);
         }
     }
 }
