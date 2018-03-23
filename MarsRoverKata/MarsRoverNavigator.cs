@@ -5,8 +5,7 @@ namespace MarsRoverKata
 {
     public class MarsRoverNavigator
     {
-        public MarsRover MarsRover { get; }
-
+        private readonly NavigationParameters navigationParameters;
         private static readonly LinkedList<string> directions = new LinkedList<string>(new[] { "N", "W", "S", "E" });
 
         readonly Dictionary<char, Func<string, string>> spinMethods = new Dictionary<char, Func<string, string>>
@@ -16,14 +15,24 @@ namespace MarsRoverKata
             {'M', Stay }
         };
 
-        public MarsRoverNavigator(MarsRover marsRover)
+        public MarsRoverNavigator(NavigationParameters navigationParameters)
         {
-            MarsRover = marsRover;
+            this.navigationParameters = navigationParameters;
         }
         
         public void ChangeDirection(char directionChangeCommand)
         {
-            MarsRover.SetCurrentDirection(spinMethods[directionChangeCommand](MarsRover.CurrentDirection));
+            SetCurrentDirection(spinMethods[directionChangeCommand](navigationParameters.CurrentDirection));
+        }
+
+        public void SetCurrentDirection(string newDirection)
+        {
+            navigationParameters.UpdateCurrentDirection(newDirection);
+        }
+
+        public string Navigate()
+        {
+            return String.Empty;
         }
 
         private static string TurnRight(string currentDirection)

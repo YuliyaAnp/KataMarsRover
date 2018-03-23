@@ -51,6 +51,7 @@
     <Compile Include="Coordinates.cs" />
     <Compile Include="MarsRover.cs" />
     <Compile Include="MarsRoverNavigator.cs" />
+    <Compile Include="NavigationParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

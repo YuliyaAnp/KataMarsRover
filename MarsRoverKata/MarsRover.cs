@@ -6,18 +6,16 @@ namespace MarsRoverKata
 {
     public class MarsRover
     {
-        public string CurrentDirection { get; private set; }
-        public char[] Command { get; private set; }
-        public Coordinates PlateauDimenstions { get; private set; }
-        public Coordinates CurrentCoordinates { get; private set; }
+        public NavigationParameters NavigationParameters { get; private set; }
+        public string FinalPosition { get; private set; }
 
+        private string currentDirection;
+        private char[] command;
+        private Coordinates plateauDimenstions;
+        private Coordinates currentCoordinates;
         private readonly string input;
-
-        public MarsRover(char startingDirection)
-        {
-            CurrentDirection = startingDirection.ToString();
-        }
-
+        private MarsRoverNavigator marsRoverNavigator;
+        
         public MarsRover(string input)
         {
             this.input = input;
@@ -28,12 +26,14 @@ namespace MarsRoverKata
             string[] inputByLines = SplitInputByLines(input);
             SetPlateauDimensions(inputByLines);
             SetCurrentPositionAndDirection(inputByLines);
-            Command = inputByLines[2].ToCharArray();
-        }
+            command = inputByLines[2].ToCharArray();
 
-        public void SetCurrentDirection(string newDirection)
+            NavigationParameters = new NavigationParameters(currentDirection, plateauDimenstions, currentCoordinates, command);
+        }
+        public void Navigate()
         {
-            CurrentDirection = newDirection;
+            marsRoverNavigator = new MarsRoverNavigator(NavigationParameters);
+            FinalPosition = marsRoverNavigator.Navigate();
         }
 
         private static string[] SplitInputByLines(string input)
@@ -54,7 +54,7 @@ namespace MarsRoverKata
                 throw new ArgumentException("Plateau dimensions should contain two parameters: x and y");
             }
 
-            PlateauDimenstions = new Coordinates
+            plateauDimenstions = new Coordinates
             {
                 X = Int32.Parse(stringPlateauDimenstions[0]),
                 Y = Int32.Parse(stringPlateauDimenstions[1])
@@ -71,13 +71,13 @@ namespace MarsRoverKata
                 throw new ArgumentException("Current position and direction should contain three parameters: x, y and direction");
             }
 
-            CurrentCoordinates = new Coordinates
+            currentCoordinates = new Coordinates
             {
                 X = Int32.Parse(stringCurrentPositionAndDirection[0]),
                 Y = Int32.Parse(stringCurrentPositionAndDirection[1])
             };
 
-            CurrentDirection = stringCurrentPositionAndDirection[2];
+            currentDirection = stringCurrentPositionAndDirection[2];
         }
     }
 }

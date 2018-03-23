@@ -19,10 +19,15 @@ namespace MarsRoverKataTests
             var expectedPlateausDimensions = new Coordinates() { X = expectedXPlateauDimension, Y = expectedYPlateauDimension };
             var expectedStartingPosition = new Coordinates() { X = expectedXStartPosition, Y = expectedYStartPosition };
 
-            marsRover.PlateauDimenstions.Should().BeEquivalentTo(expectedPlateausDimensions);
-            marsRover.CurrentCoordinates.Should().BeEquivalentTo(expectedStartingPosition);
-            marsRover.CurrentDirection.Should().BeEquivalentTo(expectedDirection);
-            marsRover.Command.Should().BeEquivalentTo(expectedCommand);
+            var expectedNavigationParameters = new NavigationParameters(expectedDirection, expectedPlateausDimensions, 
+                                                        expectedStartingPosition, expectedCommand.ToCharArray());
+
+            //marsRover.PlateauDimenstions.Should().BeEquivalentTo(expectedPlateausDimensions);
+            //marsRover.CurrentCoordinates.Should().BeEquivalentTo(expectedStartingPosition);
+            //marsRover.CurrentDirection.Should().BeEquivalentTo(expectedDirection);
+            //marsRover.Command.Should().BeEquivalentTo(expectedCommand);
+
+            marsRover.NavigationParameters.Should().BeEquivalentTo(expectedNavigationParameters);
         }
 
         [TestCase("1 10 5\n5 9 E\nLMLMLM", 1, 10, 5, 9, "E", "LMLMLM")]
