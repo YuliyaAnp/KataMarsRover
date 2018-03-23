@@ -1,41 +1,50 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace MarsRoverKata
 {
     public class MarsRoverNavigator
     {
-        private static LinkedList<string> directions = new LinkedList<string>(new [] { "N", "W", "S", "E" });
+        public MarsRover MarsRover { get; }
 
-        readonly Dictionary<string,Func<string>> spinMethods = new Dictionary<string, Func<string>>
+        public MarsRoverNavigator(MarsRover marsRover)
         {
-            {"L", TurnLeft},
-            {"R", TurnRight}
-        };
-        // public string CurrentDirection => currentDirection;
-        static string currentDirection;
-
-        public MarsRoverNavigator(string startingDirection)
-        {
-            currentDirection = startingDirection;
-        }  
-
-        public string Navigate(string inputControlSymbol)
-        {
-            currentDirection = spinMethods[inputControlSymbol]();
-            return currentDirection;
+            MarsRover = marsRover;
         }
 
-        private static string TurnRight()
+        private static LinkedList<string> directions = new LinkedList<string>(new[] { "N", "W", "S", "E" });
+
+        readonly Dictionary<char, Func<string, string>> spinMethods = new Dictionary<char, Func<string, string>>
+        {
+            {'L', TurnLeft},
+            {'R', TurnRight},
+            {'M', Stay }
+        };
+
+
+        private static string TurnRight(string currentDirection)
         {
             LinkedListNode<string> currentIndex = directions.Find(currentDirection);
             return currentIndex.PreviousOrLast().Value;
         }
 
-        private static string TurnLeft()
+        private static string TurnLeft(string currentDirection)
         {
             LinkedListNode<string> currentIndex = directions.Find(currentDirection);
             return currentIndex.NextOrFirst().Value;
+        }
+
+        private static string Stay(string currentDirection)
+        {
+            return currentDirection;
+        }
+
+        public void ChangeDirection(char directionChangeCommand)
+        {
+            MarsRover.SetCurrentDirection(spinMethods[directionChangeCommand](MarsRover.CurrentDirection));
         }
     }
 }

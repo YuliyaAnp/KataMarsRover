@@ -1,6 +1,7 @@
 ﻿using System;
 using MarsRoverKata;
 using NUnit.Framework;
+using FluentAssertions;
 
 namespace MarsRoverKataTests
 {
@@ -21,19 +22,14 @@ namespace MarsRoverKataTests
         [TestCase('E', 'M', "E")]
         public void ReturnCorrectFinalDirectionWhenPassInitialAndSpinDirections(char startingDirection, char inputControlSymbol, string expectedDirection)
         {
-            var mrn = new MarsRoverNavigator(startingDirection);
-            string actualDirection = mrn.DoAStep(inputControlSymbol);
+            var marsRover = new MarsRover(startingDirection);
+            var marsRoverNavigator = new MarsRoverNavigator(marsRover);
 
-            Assert.AreEqual(expectedDirection, actualDirection);
-        }
+            marsRoverNavigator.ChangeDirection(inputControlSymbol);
 
-        [TestCase("5 5\n0 0 N\nM", "0 1 N")]
-        public void ReturnCorrectFinalPositionWhenPassACommand(string command, string expectedPosition)
-        {
-            var mrn = new MarsRoverNavigator(command);
-            string actualPosition = mrn.Navigate();
+            var actualDiretion = marsRover.CurrentDirection;
 
-            Assert.AreEqual(expectedPosition, actualPosition);
+            Assert.AreEqual(expectedDirection, actualDiretion);
         }
     }
 }

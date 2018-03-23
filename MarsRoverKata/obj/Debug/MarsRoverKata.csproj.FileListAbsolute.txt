@@ -4,3 +4,6 @@ C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\Mar
 C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKata\obj\Debug\MarsRoverKata.dll
 C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKata\obj\Debug\MarsRoverKata.pdb
 C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKata\obj\Debug\MarsRoverKata.csprojResolveAssemblyReference.cache
+C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKata\bin\Debug\nunit.framework.dll
+C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKata\bin\Debug\nunit.framework.pdb
+C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKata\bin\Debug\nunit.framework.xml
