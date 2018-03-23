@@ -4,30 +4,21 @@ using NUnit.Framework.Internal;
 
 namespace MarsRoverKata
 {
-    public class MarsRoverNavigator
+    public class MarsRover
     {
-        private static LinkedList<string> directions = new LinkedList<string>(new [] { "N", "W", "S", "E" });
-
-        readonly Dictionary<char,Func<string, string>> spinMethods = new Dictionary<char, Func<string, string>>
-        {
-            {'L', TurnLeft},
-            {'R', TurnRight},
-            {'M', Stay }
-        };
-
         public string CurrentDirection { get; private set; }
         public char[] Command { get; private set; }
         public Coordinates PlateauDimenstions { get; private set; }
         public Coordinates CurrentCoordinates { get; private set; }
 
-        private string input;
+        private readonly string input;
 
-        public MarsRoverNavigator(char startingDirection)
+        public MarsRover(char startingDirection)
         {
             CurrentDirection = startingDirection.ToString();
         }
 
-        public MarsRoverNavigator(string input)
+        public MarsRover(string input)
         {
             this.input = input;
         }
@@ -38,6 +29,36 @@ namespace MarsRoverKata
             SetPlateauDimensions(inputByLines);
             SetCurrentPositionAndDirection(inputByLines);
             Command = inputByLines[2].ToCharArray();
+        }
+
+        public void SetCurrentDirection(string newDirection)
+        {
+            CurrentDirection = newDirection;
+        }
+
+        private static string[] SplitInputByLines(string input)
+        {
+            if (!input.Contains("\n"))
+            {
+                throw new Exception("Error occured while splitting the input: format is incorrect");
+            }
+            return input.Split('\n');
+        }
+
+        private void SetPlateauDimensions(string[] inputLines)
+        {
+            var stringPlateauDimenstions = inputLines[0].Split(' ');
+            if (stringPlateauDimenstions.Length != 2)
+            {
+                Console.WriteLine("Plateau dimensions should contain two parameters: x and y");
+                throw new ArgumentException("Plateau dimensions should contain two parameters: x and y");
+            }
+
+            PlateauDimenstions = new Coordinates
+            {
+                X = Int32.Parse(stringPlateauDimenstions[0]),
+                Y = Int32.Parse(stringPlateauDimenstions[1])
+            };
         }
 
         private void SetCurrentPositionAndDirection(string[] inputByLines)
@@ -57,54 +78,6 @@ namespace MarsRoverKata
             };
 
             CurrentDirection = stringCurrentPositionAndDirection[2];
-        }
-
-        private void SetPlateauDimensions(string[] inputLines)
-        {
-            var stringPlateauDimenstions = inputLines[0].Split(' ');
-            if (stringPlateauDimenstions.Length != 2)
-            {
-                Console.WriteLine("Plateau dimensions should contain two parameters: x and y");
-                throw new ArgumentException("Plateau dimensions should contain two parameters: x and y");
-            }
-
-            PlateauDimenstions = new Coordinates
-            {
-                X = Int32.Parse(stringPlateauDimenstions[0]),
-                Y = Int32.Parse(stringPlateauDimenstions[1])
-            };
-        }
-
-        private static string[] SplitInputByLines(string input)
-        {
-            if (!input.Contains("\n"))
-            {
-                throw new Exception("Error occured while splitting the input: format is incorrect"); 
-            }
-            return input.Split('\n');
-        }
-
-        public string DoAStep(char inputControlSymbol)
-        {
-            CurrentDirection = spinMethods[inputControlSymbol](CurrentDirection);
-            return CurrentDirection;
-        }
-
-        private static string TurnRight(string currentDirection)
-        {
-            LinkedListNode<string> currentIndex = directions.Find(currentDirection);
-            return currentIndex.PreviousOrLast().Value;
-        }
-
-        private static string TurnLeft(string currentDirection)
-        {
-            LinkedListNode<string> currentIndex = directions.Find(currentDirection);
-            return currentIndex.NextOrFirst().Value;
-        }
-
-        private static string Stay(string currentDirection)
-        {
-            return currentDirection;
         }
     }
 }

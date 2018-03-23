@@ -19,11 +19,10 @@ namespace MarsRoverKataTests
             var expectedPlateausDimensions = new Coordinates() { X = expectedXPlateauDimension, Y = expectedYPlateauDimension };
             var expectedStartingPosition = new Coordinates() { X = expectedXStartPosition, Y = expectedYStartPosition };
 
-            Assert.AreEqual(marsRover.PlateauDimenstions, expectedPlateausDimensions);
-            Assert.AreEqual(marsRover.CurrentCoordinates, expectedStartingPosition);
-            Assert.AreEqual(marsRover.CurrentDirection, expectedDirection);
-            Assert.AreEqual(marsRover.Command, expectedCommand);
-
+            marsRover.PlateauDimenstions.Should().BeEquivalentTo(expectedPlateausDimensions);
+            marsRover.CurrentCoordinates.Should().BeEquivalentTo(expectedStartingPosition);
+            marsRover.CurrentDirection.Should().BeEquivalentTo(expectedDirection);
+            marsRover.Command.Should().BeEquivalentTo(expectedCommand);
         }
 
         [TestCase("1 10 5\n5 9 E\nLMLMLM", 1, 10, 5, 9, "E", "LMLMLM")]
