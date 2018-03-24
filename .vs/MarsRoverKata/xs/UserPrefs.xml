@@ -1,0 +1,33 @@
+﻿<Properties StartupConfiguration="{5E8F6D93-29BC-45D4-8FC5-03E91C68FDA8}|Unit Tests">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MarsRoverKata/MarsRoverNavigator.cs">
+    <Files>
+      <File FileName="MarsRoverKata/MarsRover.cs" Line="1" Column="14" />
+      <File FileName="MarsRoverKata/MarsRoverNavigator.cs" Line="25" Column="25" />
+      <File FileName="MarsRoverKataTests/MarsRoverShould.cs" Line="27" Column="10" />
+      <File FileName="MarsRoverKataTests/MarsRoverNavigatorShould.cs" Line="15" Column="45" />
+      <File FileName="MarsRoverKata/SpinningControl.cs" Line="16" Column="25" />
+      <File FileName="MarsRoverKata/MovingControl.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="MarsRoverKata" expanded="True" selected="True">
+            <Node name="MarsRoverKataTests" expanded="True">
+              <Node name="MarsRoverKataTests" expanded="True">
+                <Node name="MarsRoverNavigatorShould" expanded="True" />
+                <Node name="MarsRoverShould" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.MarsRoverKata PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+</Properties>

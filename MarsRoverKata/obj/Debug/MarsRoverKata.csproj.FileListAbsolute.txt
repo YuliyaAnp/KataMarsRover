@@ -1,9 +1,18 @@
-C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKata\bin\Debug\MarsRoverKata.dll
-C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKata\bin\Debug\MarsRoverKata.pdb
-C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKata\obj\Debug\MarsRoverKata.csproj.CoreCompileInputs.cache
-C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKata\obj\Debug\MarsRoverKata.dll
-C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKata\obj\Debug\MarsRoverKata.pdb
-C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKata\obj\Debug\MarsRoverKata.csprojResolveAssemblyReference.cache
-C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKata\bin\Debug\nunit.framework.dll
-C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKata\bin\Debug\nunit.framework.pdb
-C:\Users\yuliya.anpilova\Documents\Visual Studio 2017\Projects\MarsRoverKata\MarsRoverKata\bin\Debug\nunit.framework.xml
+C:/Users/yuliya.anpilova/Documents/Visual Studio 2017/Projects/MarsRoverKata/MarsRoverKata/bin/Debug/MarsRoverKata.dll
+C:/Users/yuliya.anpilova/Documents/Visual Studio 2017/Projects/MarsRoverKata/MarsRoverKata/bin/Debug/MarsRoverKata.pdb
+C:/Users/yuliya.anpilova/Documents/Visual Studio 2017/Projects/MarsRoverKata/MarsRoverKata/obj/Debug/MarsRoverKata.csproj.CoreCompileInputs.cache
+C:/Users/yuliya.anpilova/Documents/Visual Studio 2017/Projects/MarsRoverKata/MarsRoverKata/obj/Debug/MarsRoverKata.dll
+C:/Users/yuliya.anpilova/Documents/Visual Studio 2017/Projects/MarsRoverKata/MarsRoverKata/obj/Debug/MarsRoverKata.pdb
+C:/Users/yuliya.anpilova/Documents/Visual Studio 2017/Projects/MarsRoverKata/MarsRoverKata/obj/Debug/MarsRoverKata.csprojResolveAssemblyReference.cache
+C:/Users/yuliya.anpilova/Documents/Visual Studio 2017/Projects/MarsRoverKata/MarsRoverKata/bin/Debug/nunit.framework.dll
+C:/Users/yuliya.anpilova/Documents/Visual Studio 2017/Projects/MarsRoverKata/MarsRoverKata/bin/Debug/nunit.framework.pdb
+C:/Users/yuliya.anpilova/Documents/Visual Studio 2017/Projects/MarsRoverKata/MarsRoverKata/bin/Debug/nunit.framework.xml
+/Users/anpilova/Projects/KataMarsRover/MarsRoverKata/bin/Debug/MarsRoverKata.dll
+/Users/anpilova/Projects/KataMarsRover/MarsRoverKata/bin/Debug/MarsRoverKata.pdb
+/Users/anpilova/Projects/KataMarsRover/MarsRoverKata/bin/Debug/nunit.framework.dll
+/Users/anpilova/Projects/KataMarsRover/MarsRoverKata/bin/Debug/nunit.framework.pdb
+/Users/anpilova/Projects/KataMarsRover/MarsRoverKata/bin/Debug/nunit.framework.xml
+/Users/anpilova/Projects/KataMarsRover/MarsRoverKata/obj/Debug/MarsRoverKata.csprojResolveAssemblyReference.cache
+/Users/anpilova/Projects/KataMarsRover/MarsRoverKata/obj/Debug/MarsRoverKata.csproj.CoreCompileInputs.cache
+/Users/anpilova/Projects/KataMarsRover/MarsRoverKata/obj/Debug/MarsRoverKata.dll
+/Users/anpilova/Projects/KataMarsRover/MarsRoverKata/obj/Debug/MarsRoverKata.pdb

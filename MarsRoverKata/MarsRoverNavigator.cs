@@ -1,55 +1,42 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace MarsRoverKata
+﻿namespace MarsRoverKata
 {
     public class MarsRoverNavigator
     {
         private readonly NavigationParameters navigationParameters;
-        private static readonly LinkedList<string> directions = new LinkedList<string>(new[] { "N", "W", "S", "E" });
-
-        readonly Dictionary<char, Func<string, string>> spinMethods = new Dictionary<char, Func<string, string>>
-        {
-            {'L', TurnLeft},
-            {'R', TurnRight},
-            {'M', Stay }
-        };
+        private SpinningControl spinningControl;
+        private MovingControl movingControl;
 
         public MarsRoverNavigator(NavigationParameters navigationParameters)
         {
             this.navigationParameters = navigationParameters;
-        }
-        
-        public void ChangeDirection(char directionChangeCommand)
-        {
-            SetCurrentDirection(spinMethods[directionChangeCommand](navigationParameters.CurrentDirection));
-        }
-
-        public void SetCurrentDirection(string newDirection)
-        {
-            navigationParameters.UpdateCurrentDirection(newDirection);
+            spinningControl = new SpinningControl();
+            movingControl = new MovingControl();
         }
 
         public string Navigate()
         {
-            return String.Empty;
+            var command = navigationParameters.Command;
+
+            foreach (var step in command)
+            {
+                DoAStep(step);
+            }
+
+            var result = $"{navigationParameters.CurrentCoordinates.X} {navigationParameters.CurrentCoordinates.Y} {navigationParameters.CurrentDirection}";
+
+            return result;
         }
 
-        private static string TurnRight(string currentDirection)
+        private void DoAStep(char stepCommand)
         {
-            LinkedListNode<string> currentIndex = directions.Find(currentDirection);
-            return currentIndex.PreviousOrLast().Value;
-        }
+            var newDirection = spinningControl.SpinningFunctions[stepCommand](navigationParameters.CurrentDirection);
+            navigationParameters.UpdateCurrentDirection(newDirection);
 
-        private static string TurnLeft(string currentDirection)
-        {
-            LinkedListNode<string> currentIndex = directions.Find(currentDirection);
-            return currentIndex.NextOrFirst().Value;
-        }
-
-        private static string Stay(string currentDirection)
-        {
-            return currentDirection;
+            if (stepCommand == 'M')
+            {
+                var newCoordinates = movingControl.MoveFunctions[navigationParameters.CurrentDirection](navigationParameters.CurrentCoordinates);
+                navigationParameters.UpdateCurrentCoordinates(newCoordinates);
+            }
         }
     }
 }

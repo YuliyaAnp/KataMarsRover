@@ -13,26 +13,21 @@ namespace MarsRoverKataTests
         public void ParseAnInputCorrectly(string input, int expectedXPlateauDimension, int expectedYPlateauDimension,
                             int expectedXStartPosition, int expectedYStartPosition, string expectedDirection, string expectedCommand)
         {
-            var marsRover = new MarsRover(input);
-            marsRover.Initialize();
-
             var expectedPlateausDimensions = new Coordinates() { X = expectedXPlateauDimension, Y = expectedYPlateauDimension };
             var expectedStartingPosition = new Coordinates() { X = expectedXStartPosition, Y = expectedYStartPosition };
 
             var expectedNavigationParameters = new NavigationParameters(expectedDirection, expectedPlateausDimensions, 
-                                                        expectedStartingPosition, expectedCommand.ToCharArray());
+                                                        expectedStartingPosition, expectedCommand);
 
-            //marsRover.PlateauDimenstions.Should().BeEquivalentTo(expectedPlateausDimensions);
-            //marsRover.CurrentCoordinates.Should().BeEquivalentTo(expectedStartingPosition);
-            //marsRover.CurrentDirection.Should().BeEquivalentTo(expectedDirection);
-            //marsRover.Command.Should().BeEquivalentTo(expectedCommand);
+            var marsRover = new MarsRover(input);
+            marsRover.Initialize();
+            var actualResult = marsRover.NavigationParameters;
 
-            marsRover.NavigationParameters.Should().BeEquivalentTo(expectedNavigationParameters);
+            actualResult.Should().BeEquivalentTo(expectedNavigationParameters);
         }
 
-        [TestCase("1 10 5\n5 9 E\nLMLMLM", 1, 10, 5, 9, "E", "LMLMLM")]
-        public void ReturnExceptionWhenWrongPlateauDimensionsInput(string input, int expectedXPlateauDimension, int expectedYPlateauDimension,
-            int expectedXStartPosition, int expectedYStartPosition, string expectedDirection, string expectedCommand)
+        [TestCase("1 10 5\n5 9 E\nLMLMLM")]
+        public void ReturnExceptionWhenWrongPlateauDimensionsInput(string input)
         {
             var marsRover = new MarsRover(input);
 
@@ -41,9 +36,8 @@ namespace MarsRoverKataTests
                 .WithMessage("Plateau dimensions should contain two parameters: x and y");
         }
 
-        [TestCase("1 10\n5 9\nLMLMLM", 1, 10, 5, 9, "E", "LMLMLM")]
-        public void ReturnExceptionWhenWrongStartPositionInput(string input, int expectedXPlateauDimension, int expectedYPlateauDimension,
-            int expectedXStartPosition, int expectedYStartPosition, string expectedDirection, string expectedCommand)
+        [TestCase("1 10\n5 9\nLMLMLM")]
+        public void ReturnExceptionWhenWrongStartPositionInput(string input)
         {
             var marsRover = new MarsRover(input);
 
@@ -52,9 +46,8 @@ namespace MarsRoverKataTests
                 .WithMessage("Current position and direction should contain three parameters: x, y and direction");
         }
 
-        [TestCase("1 10; 5 9; LMLMLM", 1, 10, 5, 9, "E", "LMLMLM")]
-        public void ReturnExceptionWhenWrongInputFormat(string input, int expectedXPlateauDimension, int expectedYPlateauDimension,
-            int expectedXStartPosition, int expectedYStartPosition, string expectedDirection, string expectedCommand)
+        [TestCase("1 10; 5 9; LMLMLM")]
+        public void ReturnExceptionWhenWrongInputFormat(string input)
         {
             var marsRover = new MarsRover(input);
 

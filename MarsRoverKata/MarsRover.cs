@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using NUnit.Framework.Internal;
 
 namespace MarsRoverKata
 {
@@ -10,7 +8,7 @@ namespace MarsRoverKata
         public string FinalPosition { get; private set; }
 
         private string currentDirection;
-        private char[] command;
+        private string command;
         private Coordinates plateauDimenstions;
         private Coordinates currentCoordinates;
         private readonly string input;
@@ -26,7 +24,7 @@ namespace MarsRoverKata
             string[] inputByLines = SplitInputByLines(input);
             SetPlateauDimensions(inputByLines);
             SetCurrentPositionAndDirection(inputByLines);
-            command = inputByLines[2].ToCharArray();
+            command = inputByLines[2];
 
             NavigationParameters = new NavigationParameters(currentDirection, plateauDimenstions, currentCoordinates, command);
         }

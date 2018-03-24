@@ -7,42 +7,44 @@ namespace MarsRoverKataTests
     [TestFixture]
     public class MarsRoverNavigatorShould
     {
-        [TestCase("5 5\n0 0 N\nM", 'L', "W")]
-        [TestCase("5 5\n0 0 N\nM", 'R', "E")]
-        [TestCase("5 5\n0 0 W\nM", 'L', "S")]
-        [TestCase("5 5\n0 0 W\nM", 'R', "N")]
-        [TestCase("5 5\n0 0 S\nM", 'L', "E")]
-        [TestCase("5 5\n0 0 S\nM", 'R', "W")]
-        [TestCase("5 5\n0 0 E\nM", 'L', "N")]
-        [TestCase("5 5\n0 0 E\nM", 'R', "S")]
-        [TestCase("5 5\n0 0 N\nM", 'M', "N")]
-        [TestCase("5 5\n0 0 W\nM", 'M', "W")]
-        [TestCase("5 5\n0 0 S\nM", 'M', "S")]
-        [TestCase("5 5\n0 0 E\nM", 'M', "E")]
-        public void UpdateDirectionWhenPassInitialAndSpinDirections(string input, char inputControlSymbol, string expectedDirection)
+        [TestCase("5 5\n0 0 N\nL", "0 0 W")]
+        [TestCase("5 5\n0 0 N\nR", "0 0 E")]
+        [TestCase("5 5\n0 0 W\nL", "0 0 S")]
+        [TestCase("5 5\n0 0 W\nR", "0 0 N")]
+        [TestCase("5 5\n0 0 S\nL", "0 0 E")]
+        [TestCase("5 5\n0 0 S\nR", "0 0 W")]
+        [TestCase("5 5\n0 0 E\nL", "0 0 N")]
+        [TestCase("5 5\n0 0 E\nR", "0 0 S")]
+        [TestCase("5 5\n1 1 N\nM", "1 2 N")]
+        [TestCase("5 5\n1 1 W\nM", "0 1 W")]
+        [TestCase("5 5\n1 1 S\nM", "1 0 S")]
+        [TestCase("5 5\n1 1 E\nM", "2 1 E")]
+        public void UpdateDirectionWhenPassSpinDirections(string input, string expectedDirection)
         {
-            //var marsRover = new MarsRover(input);
-            //marsRover.Initialize();
-            //var marsRoverNavigator = new MarsRoverNavigator(marsRover);
+            var marsRover = new MarsRover(input);
+            marsRover.Initialize();
+            marsRover.Navigate();
 
-            //marsRoverNavigator.ChangeDirection(inputControlSymbol);
+            var actualResult = marsRover.FinalPosition;
 
-            //var actualDiretion = marsRover.CurrentDirection;
-
-            //actualDiretion.Should().BeEquivalentTo(expectedDirection);
+            actualResult.Should().BeEquivalentTo(expectedDirection);
         }
 
         [TestCase("5 5\n0 0 N\nM", "0 1 N")]
-        public void UpdatePositionWhenPassCorrectInput(string input, int expectedXPlateauDimension, int expectedYPlateauDimension,
-            int expectedXStartPosition, int expectedYStartPosition, string expectedDirection, string expectedCommand)
+        [TestCase("5 5\n1 1 N\nMLMR", "0 2 N")]
+        [TestCase("5 5\n1 1 W\nMLMLMLM", "1 1 N")]
+        [TestCase("5 5\n0 0 N\nMMMMM", "0 5 N")]
+        [TestCase("5 5\n0 0 E\nMMMMM", "5 0 E")]
+        [TestCase("5 5\n0 0 N\nRMLMRMLMRMLMRMLM", "4 4 N")]
+        public void UpdatePositionWhenPassCorrectInput(string input, string expectedPosition)
         {
-            //var marsRover = new MarsRover(input);
-            //marsRover.Initialize();
+            var marsRover = new MarsRover(input);
+            marsRover.Initialize();
+            marsRover.Navigate();
 
-            //marsRover.Navigate();
-            //var marsRoverNavigator = new MarsRoverNavigator(marsRover);
+            var actualResult = marsRover.FinalPosition;
 
-           // marsRoverNavigator.Navigate()
+            actualResult.Should().BeEquivalentTo(expectedPosition);
         }
     }
 }
