@@ -25,6 +25,7 @@ namespace MarsRoverKata
         private const string incorrectPlateauDimensionsErrorMessage = "Plateau dimensions should contain two int parameters: x and y";
         private const string incorrectStartPositionErrorMessage = "Start position and direction should contain three parameters: int x, int y and direction (N, S, W or E)";
         private MarsRoverNavigator marsRoverNavigator;
+        private List<string> allowedDirections = new List<string> { "N", "W", "E", "S" };
         
         public MarsRover(string input)
         {
@@ -106,8 +107,6 @@ namespace MarsRoverKata
 
         private bool StartPositionIsInvalid(string[] stringCurrentPositionAndDirection)
         {
-            var allowedDirections = new List<string> { "N", "W", "E", "S" };
-
             if (stringCurrentPositionAndDirection.Length != 3 || !stringCurrentPositionAndDirection[0].All(char.IsDigit)
                 || !stringCurrentPositionAndDirection[1].All(char.IsDigit) || !allowedDirections.Any(stringCurrentPositionAndDirection[2].Contains))
             {

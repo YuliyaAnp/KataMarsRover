@@ -14,6 +14,16 @@ namespace MarsRoverKata
             {"E", MoveEast}
         };
 
+        public Coordinates Move(char command, string currentDirection, Coordinates currentCoordinates)
+        {
+            if (command == 'M')
+            {
+                return MoveFunctions[currentDirection](currentCoordinates);
+            }
+
+            return currentCoordinates;
+        }
+
         private static Coordinates MoveEast(Coordinates coordinates)
         {
             return new Coordinates()

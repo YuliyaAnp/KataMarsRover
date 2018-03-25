@@ -50,14 +50,17 @@
     <Compile Include="CircularLinkedList.cs" />
     <Compile Include="Coordinates.cs" />
     <Compile Include="MarsRover.cs" />
-    <Compile Include="MarsRoverNavigator.cs" />
-    <Compile Include="NavigationParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SpinningControl.cs" />
-    <Compile Include="MovingControl.cs" />
+    <Compile Include="Navigation\SpinningControl.cs" />
+    <Compile Include="Navigation\NavigationParameters.cs" />
+    <Compile Include="Navigation\MovingControl.cs" />
+    <Compile Include="Navigation\MarsRoverNavigator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Navigation\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

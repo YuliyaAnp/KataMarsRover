@@ -1,4 +1,6 @@
-﻿namespace MarsRoverKata
+﻿using System;
+
+namespace MarsRoverKata
 {
     public class MarsRoverNavigator
     {
@@ -32,11 +34,14 @@
             var newDirection = spinningControl.SpinningFunctions[stepCommand](navigationParameters.CurrentDirection);
             navigationParameters.UpdateCurrentDirection(newDirection);
 
-            if (stepCommand == 'M')
+            var newCoordinates = movingControl.Move(stepCommand, navigationParameters.CurrentDirection, navigationParameters.CurrentCoordinates);
+
+            if (newCoordinates.X > navigationParameters.PlateauDimenstions.X || newCoordinates.Y > navigationParameters.PlateauDimenstions.Y)
             {
-                var newCoordinates = movingControl.MoveFunctions[navigationParameters.CurrentDirection](navigationParameters.CurrentCoordinates);
-                navigationParameters.UpdateCurrentCoordinates(newCoordinates);
+                throw new Exception("Command is invalid: Rover is sent outside the Plateau");
             }
+
+            navigationParameters.UpdateCurrentCoordinates(newCoordinates);
         }
     }
 }
