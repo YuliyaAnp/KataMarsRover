@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MarsRoverKata
 {
@@ -7,11 +9,21 @@ namespace MarsRoverKata
         public NavigationParameters NavigationParameters { get; private set; }
         public string FinalPosition { get; private set; }
 
-        private string currentDirection;
-        private string command;
+        private readonly string input;
         private Coordinates plateauDimenstions;
         private Coordinates currentCoordinates;
-        private readonly string input;
+        private string currentDirection;
+        private string command;
+
+        private const int expectedNumberOfInputLines = 3;
+        private const int expectedLineWithPlateauDimension = 0;
+        private const int expectedLineWithStartPosition = 1;
+        private const int expectedLineWithCommand = 2;
+        private const char linesDelimeter = '\n';
+        private const char parametersDelimeter = ' ';
+        private const string incorrectInputFormatErrorMessage = "Error occured while splitting the input: format is incorrect";
+        private const string incorrectPlateauDimensionsErrorMessage = "Plateau dimensions should contain two int parameters: x and y";
+        private const string incorrectStartPositionErrorMessage = "Start position and direction should contain three parameters: int x, int y and direction (N, S, W or E)";
         private MarsRoverNavigator marsRoverNavigator;
         
         public MarsRover(string input)
@@ -23,11 +35,12 @@ namespace MarsRoverKata
         {
             string[] inputByLines = SplitInputByLines(input);
             SetPlateauDimensions(inputByLines);
-            SetCurrentPositionAndDirection(inputByLines);
-            command = inputByLines[2];
+            SetStartPositionAndDirection(inputByLines);
+            command = inputByLines[expectedLineWithCommand];
 
             NavigationParameters = new NavigationParameters(currentDirection, plateauDimenstions, currentCoordinates, command);
         }
+
         public void Navigate()
         {
             marsRoverNavigator = new MarsRoverNavigator(NavigationParameters);
@@ -36,20 +49,23 @@ namespace MarsRoverKata
 
         private static string[] SplitInputByLines(string input)
         {
-            if (!input.Contains("\n"))
+            var splitString = input.Split(linesDelimeter);
+
+            if (splitString.Length != expectedNumberOfInputLines)
             {
-                throw new Exception("Error occured while splitting the input: format is incorrect");
+                throw new Exception(incorrectInputFormatErrorMessage);
             }
-            return input.Split('\n');
+
+            return splitString;
         }
 
         private void SetPlateauDimensions(string[] inputLines)
         {
-            var stringPlateauDimenstions = inputLines[0].Split(' ');
-            if (stringPlateauDimenstions.Length != 2)
+            var stringPlateauDimenstions = inputLines[expectedLineWithPlateauDimension].Split(parametersDelimeter);
+
+            if (PlateauDimensionsAreInvalid(stringPlateauDimenstions))
             {
-                Console.WriteLine("Plateau dimensions should contain two parameters: x and y");
-                throw new ArgumentException("Plateau dimensions should contain two parameters: x and y");
+                throw new ArgumentException(incorrectPlateauDimensionsErrorMessage);
             }
 
             plateauDimenstions = new Coordinates
@@ -59,23 +75,52 @@ namespace MarsRoverKata
             };
         }
 
-        private void SetCurrentPositionAndDirection(string[] inputByLines)
+        private bool PlateauDimensionsAreInvalid(string[] stringPlateauDimenstions)
         {
-            var stringCurrentPositionAndDirection = inputByLines[1].Split(' ');
-            
-            if (stringCurrentPositionAndDirection.Length != 3)
+            if (stringPlateauDimenstions.Length != 2 || !stringPlateauDimenstions[0].All(char.IsDigit) 
+                || !stringPlateauDimenstions[1].All(char.IsDigit))
             {
-                Console.WriteLine("Current position and direction should contain three parameters: x, y and direction");
-                throw new ArgumentException("Current position and direction should contain three parameters: x, y and direction");
+                return true;
+            }
+
+            return false;
+        }
+
+        private void SetStartPositionAndDirection(string[] inputByLines)
+        {
+            var stringCurrentPositionAndDirection = inputByLines[expectedLineWithStartPosition].Split(parametersDelimeter);
+
+            if (StartPositionIsInvalid(stringCurrentPositionAndDirection))
+            {
+                throw new ArgumentException(incorrectStartPositionErrorMessage);
             }
 
             currentCoordinates = new Coordinates
-            {
-                X = Int32.Parse(stringCurrentPositionAndDirection[0]),
-                Y = Int32.Parse(stringCurrentPositionAndDirection[1])
-            };
+                {
+                    X = Int32.Parse(stringCurrentPositionAndDirection[0]),
+                    Y = Int32.Parse(stringCurrentPositionAndDirection[1])
+                };
 
-            currentDirection = stringCurrentPositionAndDirection[2];
+            currentDirection = stringCurrentPositionAndDirection[2]; 
+        }
+
+        private bool StartPositionIsInvalid(string[] stringCurrentPositionAndDirection)
+        {
+            var allowedDirections = new List<string> { "N", "W", "E", "S" };
+
+            if (stringCurrentPositionAndDirection.Length != 3 || !stringCurrentPositionAndDirection[0].All(char.IsDigit)
+                || !stringCurrentPositionAndDirection[1].All(char.IsDigit) || !allowedDirections.Any(stringCurrentPositionAndDirection[2].Contains))
+            {
+                return true;
+            }
+
+            if (Int32.Parse(stringCurrentPositionAndDirection[0]) > plateauDimenstions.X || 
+                Int32.Parse(stringCurrentPositionAndDirection[1]) > plateauDimenstions.Y)
+            {
+                return true;
+            }
+
+            return false;
         }
     }
 }

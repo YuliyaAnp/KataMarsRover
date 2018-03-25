@@ -1,12 +1,11 @@
 ﻿<Properties StartupConfiguration="{5E8F6D93-29BC-45D4-8FC5-03E91C68FDA8}|Unit Tests">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MarsRoverKata/MarsRoverNavigator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MarsRoverKata/MovingControl.cs">
     <Files>
-      <File FileName="MarsRoverKata/MarsRover.cs" Line="1" Column="14" />
-      <File FileName="MarsRoverKata/MarsRoverNavigator.cs" Line="25" Column="25" />
-      <File FileName="MarsRoverKataTests/MarsRoverShould.cs" Line="27" Column="10" />
+      <File FileName="MarsRoverKata/MarsRover.cs" Line="26" Column="68" />
+      <File FileName="MarsRoverKataTests/MarsRoverShould.cs" Line="43" Column="38" />
+      <File FileName="MarsRoverKata/MarsRoverNavigator.cs" Line="20" Column="42" />
       <File FileName="MarsRoverKataTests/MarsRoverNavigatorShould.cs" Line="15" Column="45" />
-      <File FileName="MarsRoverKata/SpinningControl.cs" Line="16" Column="25" />
-      <File FileName="MarsRoverKata/MovingControl.cs" Line="1" Column="1" />
+      <File FileName="MarsRoverKata/MovingControl.cs" Line="5" Column="2" />
     </Files>
     <Pads>
       <Pad Id="MonoDevelop.UnitTesting.TestPad">
