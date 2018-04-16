@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace MarsRoverKata
+﻿namespace MarsRoverKata.Navigation
 {
     public class NavigationParameters
     {

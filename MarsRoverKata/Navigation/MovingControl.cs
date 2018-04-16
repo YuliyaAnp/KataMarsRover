@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MarsRoverKata
+namespace MarsRoverKata.Navigation
 {
     public class MovingControl
     {

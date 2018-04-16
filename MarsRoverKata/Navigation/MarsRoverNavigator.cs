@@ -1,12 +1,12 @@
-﻿using System;
+﻿using MarsRoverKata.Exceptions;
 
-namespace MarsRoverKata
+namespace MarsRoverKata.Navigation
 {
     public class MarsRoverNavigator
     {
         private readonly NavigationParameters navigationParameters;
-        private SpinningControl spinningControl;
-        private MovingControl movingControl;
+        private readonly SpinningControl spinningControl;
+        private readonly MovingControl movingControl;
 
         public MarsRoverNavigator(NavigationParameters navigationParameters)
         {
@@ -31,14 +31,15 @@ namespace MarsRoverKata
 
         private void DoAStep(char stepCommand)
         {
-            var newDirection = spinningControl.SpinningFunctions[stepCommand](navigationParameters.CurrentDirection);
+            var newDirection = spinningControl.GetNextDirection(navigationParameters.CurrentDirection, stepCommand);
+
             navigationParameters.UpdateCurrentDirection(newDirection);
 
             var newCoordinates = movingControl.Move(stepCommand, navigationParameters.CurrentDirection, navigationParameters.CurrentCoordinates);
 
             if (newCoordinates.X > navigationParameters.PlateauDimenstions.X || newCoordinates.Y > navigationParameters.PlateauDimenstions.Y)
             {
-                throw new Exception("Command is invalid: Rover is sent outside the Plateau");
+                throw new InvalidCommandException();
             }
 
             navigationParameters.UpdateCurrentCoordinates(newCoordinates);

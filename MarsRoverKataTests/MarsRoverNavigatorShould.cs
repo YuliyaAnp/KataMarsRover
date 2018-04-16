@@ -1,7 +1,7 @@
 ﻿using MarsRoverKata;
 using NUnit.Framework;
 using FluentAssertions;
-using System;
+using MarsRoverKata.Exceptions;
 
 namespace MarsRoverKataTests
 {
@@ -56,7 +56,7 @@ namespace MarsRoverKataTests
             marsRover.Initialize();
 
             marsRover.Invoking(y => y.Navigate())
-                     .Should().Throw<Exception>()
+                     .Should().Throw<InvalidCommandException>()
                      .WithMessage("Command is invalid: Rover is sent outside the Plateau");
             }
     }

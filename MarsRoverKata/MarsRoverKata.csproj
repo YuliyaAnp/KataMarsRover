@@ -49,6 +49,11 @@
   <ItemGroup>
     <Compile Include="CircularLinkedList.cs" />
     <Compile Include="Coordinates.cs" />
+    <Compile Include="Exceptions\IncorrectStartPositionException.cs" />
+    <Compile Include="Exceptions\IncorrectInputFormatException.cs" />
+    <Compile Include="Exceptions\IncorrectPlateauDimensionsException.cs" />
+    <Compile Include="Exceptions\InvalidCommandException.cs" />
+    <Compile Include="InputValidator.cs" />
     <Compile Include="MarsRover.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Navigation\SpinningControl.cs" />
@@ -59,9 +64,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Navigation\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

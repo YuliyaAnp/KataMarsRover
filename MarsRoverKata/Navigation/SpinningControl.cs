@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace MarsRoverKata
+namespace MarsRoverKata.Navigation
 {
     public class SpinningControl
     {
@@ -15,6 +15,11 @@ namespace MarsRoverKata
             {'R', TurnRight},
             {'M', Stay }
         };
+
+        public string GetNextDirection(string currentDirection, char stepCommand)
+        {
+            return SpinningFunctions[stepCommand](currentDirection);
+        }
 
         private static string TurnRight(string currentDirection)
         {
@@ -32,6 +37,5 @@ namespace MarsRoverKata
         {
             return currentDirection;
         }
-
     }
 }

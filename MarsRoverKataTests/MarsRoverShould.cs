@@ -1,6 +1,7 @@
-﻿using System;
-using FluentAssertions;
+﻿using FluentAssertions;
 using MarsRoverKata;
+using MarsRoverKata.Exceptions;
+using MarsRoverKata.Navigation;
 using NUnit.Framework;
 
 namespace MarsRoverKataTests
@@ -34,7 +35,7 @@ namespace MarsRoverKataTests
             var marsRover = new MarsRover(input);
 
             marsRover.Invoking(y => y.Initialize())
-                .Should().Throw<ArgumentException>()
+                .Should().Throw<IncorrectPlateauDimensionsException>()
                 .WithMessage("Plateau dimensions should contain two int parameters: x and y");
         }
 
@@ -49,7 +50,7 @@ namespace MarsRoverKataTests
             var marsRover = new MarsRover(input);
 
             marsRover.Invoking(y => y.Initialize())
-                .Should().Throw<ArgumentException>()
+                .Should().Throw<IncorrectStartPositionException>()
                      .WithMessage("Start position and direction should contain three parameters: int x, int y and direction (N, S, W or E)");
         }
 
@@ -60,7 +61,7 @@ namespace MarsRoverKataTests
             var marsRover = new MarsRover(input);
 
             marsRover.Invoking(y => y.Initialize())
-                .Should().Throw<Exception>()
+                .Should().Throw<IncorrectInputFormatException>()
                 .WithMessage("Error occured while splitting the input: format is incorrect");
         }
     }
