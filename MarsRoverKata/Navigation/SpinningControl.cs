@@ -1,19 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using MarsRoverKata.Constants;
 
 namespace MarsRoverKata.Navigation
 {
     public class SpinningControl
     {
         static readonly LinkedList<string> directions =
-                        new LinkedList<string>(new[] { "N", "W", "S", "E" });
+                        new LinkedList<string>(new[] { Directions.North, Directions.West, Directions.South, Directions.East });
 
         private readonly Dictionary<char, Func<string, string>> spinningFunctions =
                                 new Dictionary<char, Func<string, string>>
         {
-            {'L', TurnLeft},
-            {'R', TurnRight},
-            {'M', Stay }
+            {Commands.Left, TurnLeft},
+            {Commands.Right, TurnRight},
+            {Commands.Move, Stay }
         };
 
         public string GetNextDirection(string currentDirection, char stepCommand)

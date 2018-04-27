@@ -48,7 +48,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CircularLinkedList.cs" />
+    <Compile Include="Constants\Commands.cs" />
     <Compile Include="Coordinates.cs" />
+    <Compile Include="Constants\Directions.cs" />
     <Compile Include="Exceptions\IncorrectStartPositionException.cs" />
     <Compile Include="Exceptions\IncorrectInputFormatException.cs" />
     <Compile Include="Exceptions\IncorrectPlateauDimensionsException.cs" />

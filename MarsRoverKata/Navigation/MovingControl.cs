@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MarsRoverKata.Constants;
 
 namespace MarsRoverKata.Navigation
 {
@@ -8,15 +9,15 @@ namespace MarsRoverKata.Navigation
         private readonly Dictionary<string, Func<Coordinates, Coordinates>> moveFunctions =
                                 new Dictionary<string, Func<Coordinates, Coordinates>>
         {
-            {"N", MoveNorth},
-            {"W", MoveWest},
-            {"S", MoveSouth},
-            {"E", MoveEast}
+            { Directions.North, MoveNorth },
+            { Directions.West, MoveWest },
+            { Directions.South, MoveSouth },
+            { Directions.East, MoveEast }
         };
 
         public Coordinates Move(char command, string currentDirection, Coordinates currentCoordinates)
         {
-            if (command == 'M')
+            if (command == Commands.Move)
             {
                 return moveFunctions[currentDirection](currentCoordinates);
             }

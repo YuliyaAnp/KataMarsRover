@@ -9,7 +9,6 @@ namespace MarsRoverKata
         public MarsRover(string input)
         {
             navigationParameters = InputValidator.GetNaviagtionParametersFromInput(input);
-           // command = InputValidator.GetCommandFromInput(input);
         }
 
         private NavigationParameters navigationParameters { get; }

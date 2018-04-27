@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using MarsRoverKata.Constants;
 using MarsRoverKata.Exceptions;
 using MarsRoverKata.Navigation;
 
@@ -23,7 +24,7 @@ namespace MarsRoverKata
         private const char linesDelimeter = '\n';
         private const char parametersDelimeter = ' ';
         
-        private static readonly List<string> allowedDirections = new List<string> { "N", "W", "E", "S" };
+        private static readonly List<string> allowedDirections = new List<string> { Directions.North, Directions.West, Directions.East, Directions.South };
 
         public static NavigationParameters GetNaviagtionParametersFromInput(string input)
         {
