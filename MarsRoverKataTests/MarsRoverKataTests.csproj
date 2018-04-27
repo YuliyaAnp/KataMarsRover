@@ -54,7 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MarsRoverNavigatorShould.cs" />
-    <Compile Include="MarsRoverShould.cs" />
+    <Compile Include="InputValidatorShould.cs" />
+    <Compile Include="SpinningControlShould.cs" />
+    <Compile Include="MovingControlShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

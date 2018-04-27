@@ -8,7 +8,7 @@ namespace MarsRoverKata.Navigation
         static readonly LinkedList<string> directions =
                         new LinkedList<string>(new[] { "N", "W", "S", "E" });
 
-        public readonly Dictionary<char, Func<string, string>> SpinningFunctions =
+        private readonly Dictionary<char, Func<string, string>> spinningFunctions =
                                 new Dictionary<char, Func<string, string>>
         {
             {'L', TurnLeft},
@@ -18,7 +18,7 @@ namespace MarsRoverKata.Navigation
 
         public string GetNextDirection(string currentDirection, char stepCommand)
         {
-            return SpinningFunctions[stepCommand](currentDirection);
+            return spinningFunctions[stepCommand](currentDirection);
         }
 
         private static string TurnRight(string currentDirection)

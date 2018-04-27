@@ -5,7 +5,7 @@ namespace MarsRoverKata.Navigation
 {
     public class MovingControl
     {
-        public Dictionary<string, Func<Coordinates, Coordinates>> MoveFunctions =
+        private readonly Dictionary<string, Func<Coordinates, Coordinates>> moveFunctions =
                                 new Dictionary<string, Func<Coordinates, Coordinates>>
         {
             {"N", MoveNorth},
@@ -18,7 +18,7 @@ namespace MarsRoverKata.Navigation
         {
             if (command == 'M')
             {
-                return MoveFunctions[currentDirection](currentCoordinates);
+                return moveFunctions[currentDirection](currentCoordinates);
             }
 
             return currentCoordinates;
@@ -26,7 +26,7 @@ namespace MarsRoverKata.Navigation
 
         private static Coordinates MoveEast(Coordinates coordinates)
         {
-            return new Coordinates()
+            return new Coordinates
             {
                 X = coordinates.X + 1,
                 Y = coordinates.Y
@@ -35,7 +35,7 @@ namespace MarsRoverKata.Navigation
 
         private static Coordinates MoveSouth(Coordinates coordinates)
         {
-            return new Coordinates()
+            return new Coordinates
             {
                 X = coordinates.X,
                 Y = coordinates.Y - 1
@@ -44,7 +44,7 @@ namespace MarsRoverKata.Navigation
 
         private static Coordinates MoveWest(Coordinates coordinates)
         {
-            return new Coordinates()
+            return new Coordinates
             {
                 X = coordinates.X - 1,
                 Y = coordinates.Y
@@ -53,7 +53,7 @@ namespace MarsRoverKata.Navigation
 
         private static Coordinates MoveNorth(Coordinates coordinates)
         {
-            return new Coordinates()
+            return new Coordinates
             {
                 X = coordinates.X,
                 Y = coordinates.Y + 1

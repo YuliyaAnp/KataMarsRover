@@ -7,15 +7,19 @@ namespace MarsRoverKata.Navigation
         private readonly NavigationParameters navigationParameters;
         private readonly SpinningControl spinningControl;
         private readonly MovingControl movingControl;
+        private string currentDirection;
+        private Coordinates currentCoordinates;
 
         public MarsRoverNavigator(NavigationParameters navigationParameters)
         {
             this.navigationParameters = navigationParameters;
+            currentDirection = navigationParameters.CurrentDirection;
+            currentCoordinates = navigationParameters.CurrentCoordinates;
             spinningControl = new SpinningControl();
             movingControl = new MovingControl();
         }
 
-        public string Navigate()
+        public NavigationParameters Navigate()
         {
             var command = navigationParameters.Command;
 
@@ -24,25 +28,19 @@ namespace MarsRoverKata.Navigation
                 DoAStep(step);
             }
 
-            var result = $"{navigationParameters.CurrentCoordinates.X} {navigationParameters.CurrentCoordinates.Y} {navigationParameters.CurrentDirection}";
-
-            return result;
+            return new NavigationParameters(currentDirection, navigationParameters.PlateauDimensions, currentCoordinates, navigationParameters.Command);
         }
 
         private void DoAStep(char stepCommand)
         {
-            var newDirection = spinningControl.GetNextDirection(navigationParameters.CurrentDirection, stepCommand);
+            currentDirection = spinningControl.GetNextDirection(currentDirection, stepCommand);
 
-            navigationParameters.UpdateCurrentDirection(newDirection);
+            currentCoordinates = movingControl.Move(stepCommand, currentDirection, currentCoordinates);
 
-            var newCoordinates = movingControl.Move(stepCommand, navigationParameters.CurrentDirection, navigationParameters.CurrentCoordinates);
-
-            if (newCoordinates.X > navigationParameters.PlateauDimenstions.X || newCoordinates.Y > navigationParameters.PlateauDimenstions.Y)
+            if (currentCoordinates.X > navigationParameters.PlateauDimensions.X || currentCoordinates.Y > navigationParameters.PlateauDimensions.Y)
             {
                 throw new InvalidCommandException();
             }
-
-            navigationParameters.UpdateCurrentCoordinates(newCoordinates);
         }
     }
 }

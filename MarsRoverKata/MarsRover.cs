@@ -4,26 +4,24 @@ namespace MarsRoverKata
 {
     public class MarsRover
     {
-        private readonly string input;
         private MarsRoverNavigator marsRoverNavigator;
 
         public MarsRover(string input)
         {
-            this.input = input;
+            navigationParameters = InputValidator.GetNaviagtionParametersFromInput(input);
+           // command = InputValidator.GetCommandFromInput(input);
         }
 
-        public NavigationParameters NavigationParameters { get; private set; }
-        public string FinalPosition { get; private set; }
-
-        public void Initialize()
-        {
-            NavigationParameters = InputValidator.GetNaviagtionParametersFromInput(input);
-        }
+        private NavigationParameters navigationParameters { get; }
+        public string PositionAsAString { get; private set; }
 
         public void Navigate()
         {
-            marsRoverNavigator = new MarsRoverNavigator(NavigationParameters);
-            FinalPosition = marsRoverNavigator.Navigate();
+            marsRoverNavigator = new MarsRoverNavigator(navigationParameters);
+
+            var newPosition = marsRoverNavigator.Navigate();
+
+            PositionAsAString = $"{newPosition.CurrentCoordinates.X} {newPosition.CurrentCoordinates.Y} {newPosition.CurrentDirection}";
         }
     }
 }

@@ -8,6 +8,7 @@ namespace MarsRoverKataTests
     [TestFixture]
     public class MarsRoverNavigatorShould
     {
+        // Redundant scenario considering SpinningControlTest?
         [TestCase("5 5\n0 0 N\nL", "0 0 W")]
         [TestCase("5 5\n0 0 N\nR", "0 0 E")]
         [TestCase("5 5\n0 0 W\nL", "0 0 S")]
@@ -23,10 +24,9 @@ namespace MarsRoverKataTests
         public void UpdateDirectionWhenPassSpinDirections(string input, string expectedDirection)
         {
             var marsRover = new MarsRover(input);
-            marsRover.Initialize();
             marsRover.Navigate();
 
-            var actualResult = marsRover.FinalPosition;
+            var actualResult = marsRover.PositionAsAString;
 
             actualResult.Should().BeEquivalentTo(expectedDirection);
         }
@@ -40,10 +40,9 @@ namespace MarsRoverKataTests
         public void UpdatePositionWhenPassCorrectInput(string input, string expectedPosition)
         {
             var marsRover = new MarsRover(input);
-            marsRover.Initialize();
             marsRover.Navigate();
 
-            var actualResult = marsRover.FinalPosition;
+            var actualResult = marsRover.PositionAsAString;
 
             actualResult.Should().BeEquivalentTo(expectedPosition);
         }
@@ -53,7 +52,6 @@ namespace MarsRoverKataTests
         public void ReturnExceptionWhenCommandSendsRoverOutOfPlateau(string input)
         {
             var marsRover = new MarsRover(input);
-            marsRover.Initialize();
 
             marsRover.Invoking(y => y.Navigate())
                      .Should().Throw<InvalidCommandException>()
