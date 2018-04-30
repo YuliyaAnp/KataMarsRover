@@ -4,15 +4,15 @@ namespace MarsRoverKata
 {
     public class MarsRover
     {
-        private MarsRoverNavigator marsRoverNavigator;
-
         public MarsRover(string input)
         {
-            navigationParameters = InputValidator.GetNaviagtionParametersFromInput(input);
+            navigationParameters = InputParser.GetNaviagtionParametersFromInput(input);
         }
 
-        private NavigationParameters navigationParameters { get; }
         public string PositionAsAString { get; private set; }
+
+        private readonly NavigationParameters navigationParameters;
+        private MarsRoverNavigator marsRoverNavigator;
 
         public void Navigate()
         {

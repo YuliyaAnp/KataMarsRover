@@ -7,7 +7,7 @@ using MarsRoverKata.Navigation;
 
 namespace MarsRoverKata
 {
-    public static class InputValidator
+    public static class InputParser
     {
         private static Coordinates plateauDimenstions;
         private static Coordinates currentCoordinates;

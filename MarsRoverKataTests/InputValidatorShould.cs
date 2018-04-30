@@ -21,7 +21,7 @@ namespace MarsRoverKataTests
             var expectedNavigationParameters = new NavigationParameters(expectedDirection, expectedPlateausDimensions, 
                                                         expectedStartingPosition, expectedCommand);
 
-            var actualResult = InputValidator.GetNaviagtionParametersFromInput(input);
+            var actualResult = InputParser.GetNaviagtionParametersFromInput(input);
 
             actualResult.Should().BeEquivalentTo(expectedNavigationParameters);
         }
@@ -31,7 +31,7 @@ namespace MarsRoverKataTests
         [TestCase("10 A\n5 9 E\nLMLMLM")]
         public void ReturnException_WhenWrongPlateauDimensionsInput(string input)
         {
-            Action actual = () => InputValidator.GetNaviagtionParametersFromInput(input);
+            Action actual = () => InputParser.GetNaviagtionParametersFromInput(input);
 
             actual.Should().Throw<IncorrectPlateauDimensionsException>();
         }
@@ -44,7 +44,7 @@ namespace MarsRoverKataTests
         [TestCase("1 1\n5 1 N\nLMLMLM")]
         public void ReturnException_WhenWrongStartPositionInput(string input)
         {
-            Action actual = () => InputValidator.GetNaviagtionParametersFromInput(input);
+            Action actual = () => InputParser.GetNaviagtionParametersFromInput(input);
 
             actual.Should().Throw<IncorrectStartPositionException>();
         }
@@ -53,7 +53,7 @@ namespace MarsRoverKataTests
         [TestCase("10 10\nLMLMLM")]
         public void ReturnException_WhenWrongInputFormat(string input)
         {
-            Action actual = () => InputValidator.GetNaviagtionParametersFromInput(input);
+            Action actual = () => InputParser.GetNaviagtionParametersFromInput(input);
 
             actual.Should().Throw<IncorrectInputFormatException>();
         }
