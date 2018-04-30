@@ -19,23 +19,22 @@ namespace MarsRoverKata.Navigation
             movingControl = new MovingControl();
         }
 
-        public NavigationParameters Navigate()
+        public NavigationParameters Navigate(string command)
         {
-            var command = navigationParameters.Command;
-
             foreach (var step in command)
             {
                 DoAStep(step);
             }
 
-            return new NavigationParameters(currentDirection, navigationParameters.PlateauDimensions, currentCoordinates, navigationParameters.Command);
+            return new NavigationParameters(currentDirection, navigationParameters.PlateauDimensions, currentCoordinates);
         }
 
         private void DoAStep(char stepCommand)
         {
             currentDirection = spinningControl.GetNextDirection(currentDirection, stepCommand);
-
             currentCoordinates = movingControl.Move(stepCommand, currentDirection, currentCoordinates);
+
+
 
             if (currentCoordinates.X > navigationParameters.PlateauDimensions.X || currentCoordinates.Y > navigationParameters.PlateauDimensions.Y)
             {

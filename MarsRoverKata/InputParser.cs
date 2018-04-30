@@ -12,7 +12,6 @@ namespace MarsRoverKata
         private static Coordinates plateauDimenstions;
         private static Coordinates currentCoordinates;
         private static string currentDirection;
-        private static string command;
 
         private static string[] inputByLines;
 
@@ -26,14 +25,19 @@ namespace MarsRoverKata
         
         private static readonly List<string> allowedDirections = new List<string> { Directions.North, Directions.West, Directions.East, Directions.South };
 
-        public static NavigationParameters GetNaviagtionParametersFromInput(string input)
+        public static NavigationParameters GetNavigationParametersFromInput(string input)
         {
             SplitInputByLines(input);
             SetPlateauDimensions(inputByLines);
             SetStartPositionAndDirection(inputByLines);
-            SetCommand();
 
-            return new NavigationParameters(currentDirection, plateauDimenstions, currentCoordinates, command);
+            return new NavigationParameters(currentDirection, plateauDimenstions, currentCoordinates);
+        }
+
+        public static string GetCommandFromInput(string input)
+        {
+            SplitInputByLines(input);
+            return inputByLines[expectedLineWithCommand];
         }
 
         private static void SplitInputByLines(string input)
@@ -80,11 +84,6 @@ namespace MarsRoverKata
             };
 
             currentDirection = stringCurrentPositionAndDirection[2];
-        }
-
-        private static void SetCommand()
-        {
-            command = inputByLines[expectedLineWithCommand];
         }
 
         private static bool StartPositionIsInvalid(string[] stringCurrentPositionAndDirection)
