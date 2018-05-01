@@ -6,9 +6,6 @@ namespace MarsRoverKata.Navigation
 {
     public class SpinningControl
     {
-        static readonly LinkedList<string> directions =
-                        new LinkedList<string>(new[] { Directions.North, Directions.West, Directions.South, Directions.East });
-
         private readonly Dictionary<char, Func<string, string>> spinningFunctions =
                                 new Dictionary<char, Func<string, string>>
         {
@@ -24,13 +21,13 @@ namespace MarsRoverKata.Navigation
 
         private static string TurnRight(string currentDirection)
         {
-            LinkedListNode<string> currentIndex = directions.Find(currentDirection);
+            LinkedListNode<string> currentIndex = Directions.AllowedDirections.Find(currentDirection);
             return currentIndex.PreviousOrLast().Value;
         }
 
         private static string TurnLeft(string currentDirection)
         {
-            LinkedListNode<string> currentIndex = directions.Find(currentDirection);
+            LinkedListNode<string> currentIndex = Directions.AllowedDirections.Find(currentDirection);
             return currentIndex.NextOrFirst().Value;
         }
 

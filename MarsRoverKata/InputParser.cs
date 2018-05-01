@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using MarsRoverKata.Constants;
 using MarsRoverKata.Exceptions;
@@ -23,8 +22,6 @@ namespace MarsRoverKata
         private const char linesDelimeter = '\n';
         private const char parametersDelimeter = ' ';
         
-        private static readonly List<string> allowedDirections = new List<string> { Directions.North, Directions.West, Directions.East, Directions.South };
-
         public static NavigationParameters GetNavigationParametersFromInput(string input)
         {
             SplitInputByLines(input);
@@ -89,7 +86,7 @@ namespace MarsRoverKata
         private static bool StartPositionIsInvalid(string[] stringCurrentPositionAndDirection)
         {
             if (stringCurrentPositionAndDirection.Length != 3 || !stringCurrentPositionAndDirection[0].All(char.IsDigit)
-               || !stringCurrentPositionAndDirection[1].All(char.IsDigit) || !allowedDirections.Any(stringCurrentPositionAndDirection[2].Contains))
+               || !stringCurrentPositionAndDirection[1].All(char.IsDigit) || !Directions.AllowedDirections.Any(stringCurrentPositionAndDirection[2].Contains))
             {
                 return true;
             }
